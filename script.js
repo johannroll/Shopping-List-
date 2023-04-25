@@ -76,6 +76,7 @@ function createIcon(classes) {
 function addItemToDOM (item) {
     //Create list item
     const li = document.createElement('li');
+    li.classList.add('edit-item');
     li.appendChild(document.createTextNode(item));
     
     const button = createButton('remove-item btn-link text-red');
@@ -97,9 +98,10 @@ function getItemsFromStorage () {
 }
 
 function onClickItem(e) {
+    
     if (e.target.parentNode.classList.contains('remove-item')) {
         removeItem(e.target.parentNode.parentNode);
-    } else {
+    } else if (e.target.classList.contains('edit-item')) {
         setItemToEdit(e.target);
     }
 }
